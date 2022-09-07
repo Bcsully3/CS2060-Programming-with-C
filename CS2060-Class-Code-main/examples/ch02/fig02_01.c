@@ -1,23 +1,31 @@
-// Fig. 2.1: fig02_01.c
+
 // A first program in C 
 #include <stdio.h>
 
 // function main begins program execution 
 int main( void )
 {
-	int length, width, area, division; //initialize variables
-	printf("Enter the length:\n");	//get length
-	scanf("%d", length);
+	
+	unsigned int x;
+    unsigned int y;
+	
+		 // prompt user for input
+		 printf("%s", "Enter two unsigned integers in the range 1-20: ");
+	 scanf("%u%u", &x, &y); // read values for x and y
+	
+		 for (unsigned int i = 1; i <= y; ++i) { // count from 1 to y
+		
+			 for (unsigned int j = 1; j <= x; ++j) { // count from 1 to x
+			 printf("%s", "@");
+			
+		}
+		
+			 puts(""); // begin new line
+		
+	}
+	
 
-	printf("Enter the width:\n");	//get width
-	scanf("%d", width);
-
-	area = length * width;	//print area
-	printf("\n\nlength:%d  width:%d  Area:%d \n\n", length, width, area);
-
-	division = length / width;
-	printf("division result: %d", division);
-	return 0;
+	 
 
 } // end function main 
 
