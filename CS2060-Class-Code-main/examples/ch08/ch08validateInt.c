@@ -8,10 +8,13 @@
 
 
 #define LENGTH 13
+#define MAX 100
+#define MIN 0
 
-void  exploreValidateInt(const char* buff);
+bool exploreValidateInt(const char* buff);
 bool validateInt(char* buff, int* const validInt);
 void printLimits();
+
 
 int main(void)
 {
@@ -25,15 +28,18 @@ int main(void)
 	puts("\nEnter an integer");
 	fgets(inputStr, LENGTH, stdin);
 
+	if (inputStr[(strlen(inputStr)) - 1] == '\n') {
+		inputStr[(strlen(inputStr)) - 1] = '\0';
+	}
+
 	for (unsigned int counter = 1; counter < 6; counter++)
 	{
 		exploreValidateInt(inputStr);
 
 	}
 
-
-
 }
+
 
 
 
@@ -59,13 +65,16 @@ void printLimits()
 }
 
 
-void  exploreValidateInt(const char* buff)
+bool exploreValidateInt(const char* buff, int* validIntPtr)
 {
 	char* end;
 	errno = 0;
-	int validInt = 0;
+	bool boolean = false;
 	long intTest = strtol(buff, &end, 10);
-	if (end == buff) {
+	if ((intTest > MAX) || (intTest < MIN)) {
+		printf("%s is out of range\n", buff);
+	}
+	else if (end == buff) {
 		fprintf(stderr, "%s: not a decimal number\n", buff);
 	}
 	else if ('\0' != *end) {
@@ -81,7 +90,10 @@ void  exploreValidateInt(const char* buff)
 		fprintf(stderr, "%ld less than INT_MIN\n", intTest);
 	}
 	else {
-		validInt = (int)intTest;
+		*validIntPtr = (int)intTest;
 		printf("%ld is integer value ", intTest);
+		boolean = true;
 	}
+
+	return boolean;
 }

@@ -29,8 +29,8 @@ int main(void)
 	
 	//strcpyEx1();
 	//strcpyEx2();
-	strncpyEx1();
-	strncpyEx2();
+	//strncpyEx1();
+	//strncpyEx2();
 	//stringCompare();
 
 	//notice how test data can be sent in a loop so do not need to enter
@@ -46,7 +46,7 @@ int main(void)
 
 	//numSpace();
 	//letterAnalysis();
-	//wordSize();
+	wordSize();
 	//wordOccurs();
     //memoryFunctions();
 
